@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool free = false;
   bool selected = false;
   bool taskempty = false;
-  String selcetedtime = "5 min";
+  int selcetedtime = 0;
   bool addtask = false;
 
   @override
@@ -51,11 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        child: Text(
-                          "I'm free",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(10000)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(80.0),
+                            child: Text(
+                              "I'm free",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                         onTap: () {
@@ -116,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "5 min";
+                              selcetedtime = 0;
 
                               free = false;
                               selected = true;
@@ -134,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "10 min";
+                              selcetedtime = 1;
 
                               free = false;
                               selected = true;
@@ -152,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "30 min";
+                              selcetedtime = 2;
 
                               free = false;
                               selected = true;
@@ -175,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "1 hour";
+                              selcetedtime = 3;
 
                               free = false;
                               selected = true;
@@ -193,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "2 hours";
+                              selcetedtime = 4;
 
                               free = false;
                               selected = true;
@@ -211,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "2 days";
+                              selcetedtime = 5;
 
                               free = false;
                               selected = true;
@@ -234,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "2 days";
+                              selcetedtime = 6;
 
                               free = false;
                               selected = true;
@@ -252,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              selcetedtime = "1 week";
+                              selcetedtime = 7;
 
                               free = false;
                               selected = true;
@@ -307,9 +315,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
-                                                  0.75,
+                                                  0.5,
                                               child: Text(
                                                 tasks.elementAt(index).task,
+                                                maxLines: 5,
+                                                style: TextStyle(fontSize: 16),
+                                                overflow: TextOverflow.clip,
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(0.0),
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.25,
+                                              child: Text(
+                                                tasks.elementAt(index).time,
                                                 maxLines: 5,
                                                 style: TextStyle(fontSize: 16),
                                                 overflow: TextOverflow.clip,
